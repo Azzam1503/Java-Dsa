@@ -7,9 +7,9 @@ public class fibonacci {
         int b = 1;
         int c;
 
-        System.out.println(0);
-        System.out.println(1);
-        while(a+3<n){
+        System.out.println(a);
+        System.out.println(b);
+            for(int i = 2; i<n;i++){
             c = a+b;
             a=b;
             b=c;
