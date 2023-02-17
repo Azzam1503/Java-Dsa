@@ -18,20 +18,30 @@ public class pattern4 {
 
         System.out.println("Enter the value of n ");
         int n = sc.nextInt();
-        int i = 1;
-        int val = 1;
-        while(i<=n){
-            int j=1;
-            val = n;
-            while(j<=i){
-                char jthCharacter = (char)('A'+ val-i);
-                System.out.print(jthCharacter);
-                val++;
-                j++;
+
+
+        // int i = 1;
+        // int val = 1;
+        // while(i<=n){
+        //     int j=1;
+        //     val = n;
+        //     while(j<=i){
+        //         char jthCharacter = (char)('A'+ val-i);
+        //         System.out.print(jthCharacter);
+        //         val++;
+        //         j++;
+        //     }
+        //     System.out.println();
+        //     i++;
+        // }
+        
+        for(int i=1; i<=n; i++){
+            char startingChar = (char)('A' + n -i);
+            for(int j=1; j<=i; j++){
+                System.out.print(startingChar);
+                startingChar++;
             }
             System.out.println();
-            i++;
         }
-        
     }
 }
