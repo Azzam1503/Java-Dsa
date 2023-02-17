@@ -11,15 +11,25 @@ public class pattern6{
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the value of n");
         int n = sc.nextInt();
-        int i = 1;
-        while(i<=n){
-            int j =1;
-            while(j<=i){
+        //Using while loop
+        // int i = 1;
+        // while(i<=n){
+        //     int j =1;
+        //     while(j<=i){
+        //         System.out.print(i);
+        //         j++;
+        //     }
+        //     System.out.println(" ");
+        //     i++;
+        // }
+
+
+            //using for loop
+        for(int i=1; i<=n; i++){
+            for(int j=1; j<=i; j++){
                 System.out.print(i);
-                j++;
             }
-            System.out.println(" ");
-            i++;
+            System.out.println();
         }
 
     }

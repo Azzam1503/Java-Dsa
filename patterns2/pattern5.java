@@ -1,5 +1,5 @@
 // print this pattern:
-//* 
+// * 
 // ** 
 // *** 
 // **** 
@@ -12,15 +12,22 @@ public class pattern5{
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the value of n");
         int n = sc.nextInt();
-        int i = 1;
-        while(i<=n){
-            int j =1;
-            while(j<=i){
+        // int i = 1;
+        // while(i<=n){
+        //     int j =1;
+        //     while(j<=i){
+        //         System.out.print("*");
+        //         j++;
+        //     }
+        //     System.out.println(" ");
+        //     i++;
+        // }
+
+        for(int i=1; i<=n; i++){
+            for(int j=1; j<=i; j++){
                 System.out.print("*");
-                j++;
             }
-            System.out.println(" ");
-            i++;
+            System.out.println();
         }
 
     }

@@ -12,18 +12,28 @@ public class pattern4{
         System.out.println("Enter the value of n");
         int n = sc.nextInt();
 
-        int i = 1;
-        int val = 1;
-        while(i<=n){
-            int j = 1;
-            val=i;
-            while(j<=i){
-                System.out.print(val + " ");
+        // int i = 1;
+        // int val = 1;
+        // while(i<=n){
+        //     int j = 1;
+        //     val=i;
+        //     while(j<=i){
+        //         System.out.print(val + " ");
+        //         val++;
+        //         j++;
+        //     }
+        //     System.out.println();
+        //     i++;
+        // }
+
+        // int val;
+        for(int i=1; i<=n; i++){
+            int val=i;
+            for(int j=1; j<=i; j++){
+                System.out.print(val +" ");
                 val++;
-                j++;
             }
             System.out.println();
-            i++;
         }
 
     }
