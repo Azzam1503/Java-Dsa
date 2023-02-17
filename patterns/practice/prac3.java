@@ -40,5 +40,6 @@ public class prac3 {
         }
 
         System.out.println(even + " " + odd);
+
     }
 }

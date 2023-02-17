@@ -14,5 +14,6 @@ public class prac4 {
             i++;
         }
         System.out.println(ans);
+           
     }
 }

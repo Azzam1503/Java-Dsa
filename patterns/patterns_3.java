@@ -8,16 +8,25 @@ public class patterns_3 {
 
         int i = 1;
         
-        while(i <=n){
-            int j =1;
-            int val = i;
-            while(j<=i){
+        // while(i <=n){
+        //     int j =1;
+        //     int val = i;
+        //     while(j<=i){
+        //         System.out.print(val);
+        //         val++;
+        //         j++;
+        //     }
+        //     System.out.println();
+        //     i++;
+        // }
+
+        for(i =1; i<=n;i++){
+            int val=i;
+            for(int j=1; j<=i;j++){
                 System.out.print(val);
                 val++;
-                j++;
             }
             System.out.println();
-            i++;
         }
     }
 }

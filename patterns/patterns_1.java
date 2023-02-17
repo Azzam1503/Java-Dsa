@@ -8,15 +8,23 @@ public class patterns_1 {
         int n = s.nextInt();
         int i =1;
         int val =1;
-        while(i<=n){
-            int j = 1;
-            while(j <= i){
-                System.out.print(val+" ");
+        // while(i<=n){
+        //     int j = 1;
+        //     while(j <= i){
+        //         System.out.print(val+" ");
+        //         val++;
+        //         j++;
+        //     }
+        //     System.out.println();
+        //     i++;
+        // }
+
+        for(i=1; i<=n;i++){
+            for(int j=1; j<=i;j++){
+                System.out.print(val + " ");
                 val++;
-                j++;
             }
             System.out.println();
-            i++;
         }
     }
 }

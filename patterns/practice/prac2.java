@@ -39,6 +39,6 @@ public class prac2 {
          int totalSalary = (int)Math.round(ans);
 
         System.out.println("The total Salary is "+ totalSalary);
-        
+
     }
 }
