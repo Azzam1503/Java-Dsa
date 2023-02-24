@@ -26,10 +26,10 @@ public class binarySearch {
         int end=arr.length-1;
         int mid;
 
-        while(start <= end){
+        while(start<=end){
             mid = (start+end)/2;
             if(arr[mid]>ele){
-                end = mid-1;
+                mid = end-1;
             }else if(arr[mid]<ele){
                 start = mid+1;
             }else{
