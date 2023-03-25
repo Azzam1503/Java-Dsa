@@ -19,7 +19,7 @@ public class pushZero {
                 nonZero++;
 
             }
-        }
+        } 
         printArr(arr);
     }
     public static void main(String[] args) {

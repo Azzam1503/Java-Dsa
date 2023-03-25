@@ -8,15 +8,23 @@ public class secondLargest {
         }
         int largest = arr[0]; 
         int seclargest = Integer.MIN_VALUE;
-        for(int i=1; i<arr.length; i++){
-            if(largest<arr[i]){
+        // for(int i=1; i<arr.length; i++){
+        //     if(largest<arr[i]){
+        //         seclargest = largest;
+        //         largest = arr[i];
+        //     }else if(seclargest < arr[i] && arr[i] != largest){
+        //         seclargest = arr[i];
+        //     }
+        // }
+
+        for(int i=0; i<arr.length; i++){
+            if(arr[i] > largest){
                 seclargest = largest;
                 largest = arr[i];
-            }else if(seclargest < arr[i] && arr[i] != largest){
-                seclargest = arr[i];
+            }else if(seclargest < arr[i] && arr[i] !=largest){
+                seclargest=arr[i];
             }
         }
-      
         
         return seclargest;
         

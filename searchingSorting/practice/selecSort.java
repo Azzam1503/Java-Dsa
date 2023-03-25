@@ -21,7 +21,6 @@ public class selecSort {
                 }
             }
 
-            //Swapping 
             int temp = arr[minIndex];
             arr[minIndex] = arr[i];
             arr[i] = temp;
@@ -35,5 +34,6 @@ public class selecSort {
         selectionSort(arr);
         System.out.println("Array after sorting");
         printArr(arr);
+        System.out.println(12/10);
     }
 }
