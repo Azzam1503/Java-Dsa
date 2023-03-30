@@ -24,5 +24,6 @@ public class CalPower {
         int ans = power(5, 4);
 
         System.out.println(ans);
+        System.out.println(0%2);
     }
 }
