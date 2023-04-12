@@ -2,26 +2,24 @@ package recursion;
 
 public class CheckSorted {
     public static boolean check(int []arr){
-        if(arr.length <= 1){
-            return true;
-        }
+       if(arr.length <=1){
+        return true;
+       }
 
-        int smallArr[] = new int[arr.length-1];
-        for(int i =1; i<arr.length; i++){
-            smallArr[i-1] = arr[i];
-        }
+       int smallArr[] = new int [arr.length-1];
+       for(int i=1; i<arr.length; i++){
+            smallArr[i -1] = arr[i];
+       }
+       boolean smallAns = check(smallArr);
+       if(!smallAns){
+        return false;
+       }
 
-        boolean smallAns = check(smallArr);
-        
-        if(!smallAns){
-            return false;
-        }
-        
-        if(arr[0] <= arr[1]){
-            return true;
-        }else{
-            return false;
-        }
+       if(arr[0] > arr[1]){
+        return true;
+       }else{
+        return false;
+       }
     }
 
     public static boolean checkBetterSolution(int arr[], int startIndex){
