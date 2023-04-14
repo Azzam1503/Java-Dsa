@@ -44,28 +44,26 @@ public class RetrunKeypad {
        }
     }
     public static String[] keypad(int n){
-        if(n == 0){
-            String output[] = {" "};
-            return output;
+        if( n==0){
+        String[] output = {""};
+        return output;
         }
 
-        String[] smallerNumberArray = keypad(n/10);
+        String[] smallAns = keypad(n/10);
         String[] lastDigit = getString(n%10);
-        String output[] = new String[lastDigit.length * smallerNumberArray.length];
+        String[] output = new String[smallAns.length * lastDigit.length];
 
-        int k=0; 
+        int k=0;
         for(int i=0; i<lastDigit.length; i++){
-            for(int j=0; j<smallerNumberArray.length; j++){
-                output[k] = smallerNumberArray[j] + lastDigit[i];
+            for(int j=0; j<smallAns.length; j++){
+                output[k] = smallAns[j] + lastDigit[i];
                 k++;
             }
         }
-
         return output;
-        
     }
     public static void main(String[] args) {
-        String[] arr = keypad(234);
+        String[] arr = keypad(23);
         for(int i=0; i<arr.length; i++){
             System.out.println(arr[i]);
         }

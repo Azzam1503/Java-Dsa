@@ -51,10 +51,11 @@ public class PrintKeypad {
         }
 
         int lastDigit = n%10;
-        int smallNumber = n/10;
-        String[] lastDigitOptions = getString(lastDigit);
-        for(int i=0; i<lastDigitOptions.length; i++){
-            print(smallNumber, lastDigitOptions[i] + output);
+        int smallDigit = n/10;
+        String[] options = getString(lastDigit);
+
+        for(int i=0; i<options.length; i++){
+            print(smallDigit, options[i] + output);
         }
     }
 
