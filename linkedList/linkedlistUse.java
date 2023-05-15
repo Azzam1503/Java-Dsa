@@ -15,12 +15,31 @@ public class linkedlistUse {
         return n1;
         
     }
+
+
+    public static void print(Node<Integer> head){
+        Node<Integer> temp = head; 
+        while(temp!=null){
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+        System.out.println();
+
+        temp = head;
+        while(temp!=null){
+            System.out.print(temp.data+" ");
+            temp=temp.next;
+        }
+        System.out.println();
+    }
     public static void main(String[] args) {
 
-        Node<Integer> head = creatLinkedList();
-        
-        Node<Integer> n1 = new Node<>(23);
-        System.out.println(n1);
-        System.out.println(n1.data);
+        Node<Integer> head = creatLinkedList(); 
+        print(head);
+        // print(head);
+
+        // Node<Integer> n1 = new Node<>(23);
+        // System.out.println(n1);
+        // System.out.println(n1.data);
     }
 }
