@@ -4,7 +4,7 @@ import java.util.*;
 public class ReverseLL {
     
     public static Node<Integer> reverse(Node<Integer> head){
-        if(head == null && head.next == null){
+        if(head == null || head.next == null){
             return head;
         }
 

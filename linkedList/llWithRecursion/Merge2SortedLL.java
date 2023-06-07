@@ -15,7 +15,7 @@ public class Merge2SortedLL {
                     tail = t1;
                 }
                 t1 = t1.next;
-            }else if(t1.data > t2.data) {
+            }else {
                 if(head == null){
                     head = t2;
                     tail = t2;
