@@ -6,7 +6,7 @@ public class StackUsingLinkedLIst<T> {
     Node<T> head;
     private int size;
 
-    StackUsingLinkedLIst(){
+    public StackUsingLinkedLIst(){
         size =0;
         head = null;
     }
