@@ -1,13 +1,13 @@
 package stack;
 
-import javax.swing.text.html.parser.Element;
+
 
 public class StackUsingArray {
     private int data[];
     private int topIndex;
 
     public StackUsingArray(){
-        data = new int[10];
+        data = new int[5];
         topIndex = -1;
     }
 
@@ -19,12 +19,23 @@ public class StackUsingArray {
         return topIndex == -1;
     }
 
-    public void push(int ele) throws StackFullException{
+    public void push(int ele){
         if(topIndex == data.length-1){
-            throw new StackFullException();
+            // throw new StackFullException();
+            doubleCapacity();
         }
         data[++topIndex] = ele;
     }
+
+    private void doubleCapacity(){
+        int[] temp = data;
+        data = new int[2*temp.length];
+
+        for(int i=0; i<temp.length; i++){
+            data[i] = temp[i];
+        }
+    }
+
 
     public int top() throws StackEmptyException{
         if(topIndex == -1){
