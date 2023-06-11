@@ -17,7 +17,7 @@ public class RemoveX {
     }
 
     public static void main(String[] args) {
-        String str = "xabxa";
+        String str = "xaxbxa";
         System.out.println(remove(str));
     }
 }
