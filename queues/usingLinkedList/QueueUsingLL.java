@@ -7,7 +7,7 @@ public class QueueUsingLL<T> {
     private Node<T> rear;
 
     int size = 0;
-    QueueUsingLL(){
+    public QueueUsingLL(){
         front = null;
         rear = null;
         size = 0;;
