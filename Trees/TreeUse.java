@@ -1,11 +1,50 @@
 package Trees;
 import queues.usingArrays.QueueEmptyException;
-import queues.usingArrays.QueueUsingArray;
 import queues.usingLinkedList.QueueUsingLL;
 
 import java.util.Scanner;
 
 public class TreeUse {
+
+    public static int treeHeight(Tree<Integer> root){
+        if(root == null){
+            return 0;
+        }
+
+        int height =0;
+        for(int i=0; i<root.children.size(); i++){
+            int childHeight = treeHeight(root.children.get(i));
+            height++;
+        }
+        return height + 1;
+    }
+
+    public static int largestNode(Tree<Integer> root){
+        if(root == null){
+            return Integer.MIN_VALUE;
+        }
+
+        int ans = root.data;
+        for(int i=0; i<root.children.size(); i++){
+            int childAns = largestNode(root.children.get(i));
+            if(childAns > ans){
+                ans = childAns;
+            }
+        }
+        return ans;
+    } 
+
+    public static int numNodes(Tree<Integer> root){
+        if(root == null){
+            return 0;
+        }
+        int count =1;
+
+        for(int i=0; i<root.children.size(); i++){
+            count += numNodes(root.children.get(i));
+        }
+        return count;
+    }
 
     //input function
     public  static Tree<Integer> takeInput(Scanner s){
@@ -98,6 +137,9 @@ public class TreeUse {
         Tree<Integer> root = takeInputLevelWise();
 
         printTreeLevelWise(root);
+
+        System.out.println(numNodes(root));
+        System.out.println(largestNode(root));
 
  
     }
