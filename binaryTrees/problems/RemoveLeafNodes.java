@@ -1,25 +1,25 @@
-package binaryTrees;
+package binaryTrees.problems;
 
 import java.util.Scanner;
 
+import binaryTrees.BinaryTreeNode;
 import queues.usingArrays.QueueEmptyException;
 import queues.usingLinkedList.QueueUsingLL;
 
-public class IsNodePresent {
-    public static boolean isNodePresent(BinaryTreeNode<Integer> root, int node){
+public class RemoveLeafNodes {
+
+    public static BinaryTreeNode<Integer> removeLeafNodes(BinaryTreeNode<Integer> root){
         if(root == null){
-            return false;
+            return null;
         }
 
-        if(root.data == node){
-            return true;
+        if(root.left == null && root.right == null){
+            return null;
         }
 
-        if(root.left.data != node){
-            return isNodePresent(root.left, node);
-        }else{
-            return isNodePresent(root.right, node);
-        }
+        root.left = removeLeafNodes(root.left);
+        root.right = removeLeafNodes(root.right);
+        return root;
     }
 
     public static BinaryTreeNode<Integer> takeInputLevelWise(){
@@ -85,8 +85,6 @@ public class IsNodePresent {
         BinaryTreeNode<Integer> root = takeInputLevelWise();
         printLevelWise(root);
 
-        System.out.println(isNodePresent(root, 6));
+
     }
-
-
 }
