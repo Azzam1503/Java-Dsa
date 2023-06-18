@@ -1,8 +1,5 @@
 package binaryTrees.problems;
-
-import java.util.Queue;
 import java.util.Scanner;
-import java.util.concurrent.FutureTask;
 
 import binaryTrees.BinaryTreeNode;
 import queues.usingArrays.QueueEmptyException;
@@ -28,6 +25,31 @@ public class DiameterOfTree {
         int option3 = diameter(root.right);
 
         return Math.max(option1, Math.max(option2, option3));
+    }
+
+    public static Pair<Integer, Integer> betterDiameter(BinaryTreeNode<Integer> root){
+        //Time complexity O(n)
+        if(root == null){
+            Pair<Integer, Integer> output = new Pair<>();
+            output.height = 0;
+            output.diameter = 0;
+            return output;
+        }
+
+        Pair<Integer, Integer> leftOutput = betterDiameter(root.left);
+        Pair<Integer, Integer> rightOutput = betterDiameter(root.right);
+
+        int height = 1 + Math.max(leftOutput.height, rightOutput.height);
+        int option1 = leftOutput.height + rightOutput.height;
+        int option2 = leftOutput.diameter;
+        int option3 = rightOutput.diameter;
+
+        int diameter = Math.max(option1, Math.max(option2, option3));
+        Pair<Integer, Integer> output = new Pair<Integer, Integer>();
+        output.height= height;
+        output.diameter = diameter;
+        return output;
+
     }
 
     public static BinaryTreeNode<Integer> takeInput(){
@@ -59,7 +81,7 @@ public class DiameterOfTree {
                 int rightChildData = sc.nextInt();
                 if(rightChildData != -1){
                     BinaryTreeNode<Integer> rightChild = new BinaryTreeNode<Integer>(rightChildData);
-                    frontNode.left = rightChild;
+                    frontNode.right = rightChild;
                     pendingNoodes.enqueue(rightChild);
                 }
             } catch (QueueEmptyException e) {
@@ -70,7 +92,7 @@ public class DiameterOfTree {
 
     }
 
-    public static void print(BinaryTreeNode<Integer> root) throws QueueEmptyException{
+    public static void print(BinaryTreeNode<Integer> root) {
         if(root == null){
             return;
         }
@@ -103,6 +125,10 @@ public class DiameterOfTree {
     }
 
     public static void main(String[] args) {
-        
+        BinaryTreeNode<Integer> root = takeInput();
+        print(root);
+
+        System.out.println("Diameter- "+ betterDiameter(root).diameter);
+        System.out.println("height- "+ betterDiameter(root).height);
     }
 }
