@@ -13,12 +13,9 @@ public class IsNodePresent {
 
         if(root.data == node){
             return true;
-        }
-
-        if(root.left.data != node){
-            return isNodePresent(root.left, node);
         }else{
-            return isNodePresent(root.right, node);
+            return isNodePresent(root.left, node) || isNodePresent(root.right, node);
+            
         }
     }
 
