@@ -3,41 +3,22 @@ package binarySearchTrees.problems;
 import java.util.Scanner;
 
 import binarySearchTrees.BinaryTreeNode;
-import linkedList.Node;
 import queues.usingArrays.QueueEmptyException;
 import queues.usingLinkedList.QueueUsingLL;
 
-public class TreeToLL {
-    public static PairOfNodes treeToLL(BinaryTreeNode<Integer> root){
+public class ReplaceWithSumOfGreaterNodes {
+    
+    public static int replace(BinaryTreeNode<Integer> root, int sum){
         if(root == null){
-            PairOfNodes pair = new PairOfNodes();
-            return pair;
+            return sum;
         }
 
-        Node<Integer> currentNode = new Node<Integer>(root.data);
-        PairOfNodes leftList = treeToLL(root.left);
-        PairOfNodes rightList = treeToLL(root.right);
-        PairOfNodes pair = new PairOfNodes();
+        sum = replace(root.right, sum);
+        sum += root.data;
+        root.data = sum;
+        sum = replace(root.left, sum);
+        return sum;
 
-        if(leftList.tail != null){
-            leftList.tail.next = currentNode;
-        }
-
-        currentNode.next = rightList.head;
-
-        if(leftList.head != null){
-            pair.head = leftList.head;
-        }else{
-            pair.head = currentNode;
-        }
-
-        if(rightList.tail != null){
-            pair.tail = rightList.tail;
-        }else{
-            pair.tail = currentNode;
-        }
-
-        return pair;
     }
 
         public static BinaryTreeNode<Integer> takeInputLevelWise(){
@@ -99,22 +80,11 @@ public class TreeToLL {
         }
     }
 
-    public static void printLL(Node<Integer> head){
-        Node<Integer> temp = head;
-        while(temp != null){
-            System.out.print(temp.data + " ");
-            temp = temp.next;
-        }
-        System.out.println();
-    }
-
-
     public static void main(String[] args) {
         BinaryTreeNode<Integer> root = takeInputLevelWise();
         printLevelWise(root);
-
-        Node<Integer> head = treeToLL(root).head;
-        printLL(head);
+        System.out.println(replace(root, 0));
+        printLevelWise(root);
     }
-
 }
+ 

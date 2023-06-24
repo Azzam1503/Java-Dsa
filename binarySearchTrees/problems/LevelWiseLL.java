@@ -1,46 +1,71 @@
 package binarySearchTrees.problems;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import binarySearchTrees.BinaryTreeNode;
 import linkedList.Node;
 import queues.usingArrays.QueueEmptyException;
 import queues.usingLinkedList.QueueUsingLL;
+import stack.questions.StockSpan;
 
-public class TreeToLL {
-    public static PairOfNodes treeToLL(BinaryTreeNode<Integer> root){
+public class LevelWiseLL {
+    public static ArrayList<Node<Integer>> levelWiseLL(BinaryTreeNode<Integer> root){
         if(root == null){
-            PairOfNodes pair = new PairOfNodes();
-            return pair;
+            return null;
         }
 
-        Node<Integer> currentNode = new Node<Integer>(root.data);
-        PairOfNodes leftList = treeToLL(root.left);
-        PairOfNodes rightList = treeToLL(root.right);
-        PairOfNodes pair = new PairOfNodes();
+        QueueUsingLL<BinaryTreeNode<Integer>> pendingNodes = new QueueUsingLL<>();
+        pendingNodes.enqueue(root);
+        
+        int currentLevelRemaining =1;
+        int nextLevelCount = 0;
 
-        if(leftList.tail != null){
-            leftList.tail.next = currentNode;
+        ArrayList<Node<Integer>> output = new ArrayList<>();
+        Node<Integer> head = null;
+        Node<Integer> tail = null;
+
+
+        while(!pendingNodes.isEmpty()){
+            try {
+                BinaryTreeNode<Integer> currentTreeNode = pendingNodes.dequeue();
+                Node<Integer> newNode = new Node<Integer>(currentTreeNode.data);
+                if(head == null){
+                    head = newNode;
+                    tail = newNode;
+                }else{
+                    tail.next = newNode;
+                    tail = newNode;
+                }
+
+                if(currentTreeNode.left !=  null){
+                    pendingNodes.enqueue(currentTreeNode.left);
+                    nextLevelCount++;
+                }
+
+                if(currentTreeNode.right !=  null){
+                    pendingNodes.enqueue(currentTreeNode.right);
+                    nextLevelCount++;
+                }
+
+                currentLevelRemaining--;
+
+                if(currentLevelRemaining == 0){
+                    output.add(head);
+                    head = null;
+                    tail = null;
+                    currentLevelRemaining = nextLevelCount;
+                    nextLevelCount=0;
+                }
+            } catch (QueueEmptyException e) {
+                return null;
+            }
         }
+        return output;
 
-        currentNode.next = rightList.head;
-
-        if(leftList.head != null){
-            pair.head = leftList.head;
-        }else{
-            pair.head = currentNode;
-        }
-
-        if(rightList.tail != null){
-            pair.tail = rightList.tail;
-        }else{
-            pair.tail = currentNode;
-        }
-
-        return pair;
     }
 
-        public static BinaryTreeNode<Integer> takeInputLevelWise(){
+     public static BinaryTreeNode<Integer> takeInputLevelWise(){
         Scanner sc = new Scanner(System.in);
         QueueUsingLL<BinaryTreeNode<Integer>> pendingNodes = new QueueUsingLL<>();
         System.out.println("Enter the root data");
@@ -99,22 +124,20 @@ public class TreeToLL {
         }
     }
 
-    public static void printLL(Node<Integer> head){
-        Node<Integer> temp = head;
-        while(temp != null){
-            System.out.print(temp.data + " ");
-            temp = temp.next;
-        }
-        System.out.println();
-    }
-
-
     public static void main(String[] args) {
         BinaryTreeNode<Integer> root = takeInputLevelWise();
         printLevelWise(root);
-
-        Node<Integer> head = treeToLL(root).head;
-        printLL(head);
+        ArrayList<Node<Integer>> output = levelWiseLL(root);
+        for(Node<Integer> i:output){
+            Node<Integer> temp = i;
+            while(temp !=  null){
+                System.out.print(temp.data + " ");
+                temp = temp.next;
+            }
+            System.out.println();
+        }
     }
+
+
 
 }
