@@ -44,6 +44,13 @@ public class ReverseLL {
     public static void main(String[] args) {
         Node<Integer> head = takeInput();
         Node<Integer> head2 =reverse(head);
+        int i=1;
+        while(i<2){
+            head2 = head2.next;
+            i++;
+        }
+
+        System.out.println(head2.data);
         printLL(head2);
     }
 }

@@ -28,7 +28,6 @@ public class TreeTraversal {
 
         root.left = leftNode;
         root.right = rightNode;
-        sc.close();
         return root;
         
     }
