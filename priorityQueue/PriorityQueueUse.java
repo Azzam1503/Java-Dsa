@@ -8,11 +8,14 @@ public class PriorityQueueUse {
         pq.insert("abd", 8);
         pq.insert("abde", 90);
         pq.insert("bde", 4);
-        
-        
-        while(!pq.isEmpty()){
-            System.out.println(pq.remove());
-        }
 
+        // while (!pq.isEmpty()) {
+        // }
+        pq.getList();
+        System.out.println(pq.remove());
+        System.out.println(pq.remove());
+        System.out.println(pq.remove());
+        System.out.println(pq.remove());
+        pq.getList();
     }
 }
